@@ -1,0 +1,54 @@
+<html>
+<head>
+    <title>RanShoes.id</title>
+    <link rel="shortcut icon" type="x - icon" href="title.png">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <h1>Welcome back</h1>
+    <form onsubmit="return validateForm()">
+        <label for="username">Username: </label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="password">Password: </label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <input type="submit" value="Login">
+    </form>
+    <div id="message"></div>
+    <div id="errorMessage" style="color:red;"></div>
+    <script>
+        var attemptCount = 0;
+        const maxAttempts = 5;
+        const storedPassword = "2307413003"; // Contoh password yang benar
+
+        function validateForm() {
+            var username = document.getElementById("username").value.toUpperCase();
+            var password = document.getElementById("password").value;
+            var message = document.getElementById("message");
+            var errorMessage = document.getElementById("errorMessage");
+
+            if (username === "DADANG") {
+                if (password === storedPassword) {
+                    message.innerHTML = "<h2>Selamat datang</h2>";
+                    window.open("admin.html"); ///UBAH DISINI
+                    return true;
+                } else {
+                    attemptCount++;
+                    if (attemptCount >= maxAttempts) {
+                        alert('Anda telah mencapai batas maksimum kesalahan login.');
+                        window.location.href = 'reset_password.html';
+                    } else {
+                        errorMessage.textContent = "Password salah, coba lagi!";
+                    }
+                }
+            } else {
+                errorMessage.textContent = "";
+            }
+
+            message.innerHTML += "<p>Terimakasih Telah Mengunjungi Halaman Ini</p>";
+            return false;
+        }
+    </script>
+</body>
+</html>
