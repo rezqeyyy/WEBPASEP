@@ -1,34 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin RanShoes.id</title>
-    <link rel="shortcut icon" type="x - icon" href="title.png">
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8"> <!-- Menentukan karakter set dokumen sebagai UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Membuat halaman responsif dengan menetapkan lebar tampilan ke lebar perangkat -->
+    <title>Panel Admin</title> <!-- Judul halaman yang muncul di tab browser -->
+    <link rel="stylesheet" href="styles.css"> <!-- Menghubungkan file CSS eksternal untuk styling -->
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>WELCOME</h1>
-            <a href="#" class="logout">Log Out</a>
-        </header>
-        <main>
-            <h2>List Pesanan :</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>No. Pesan</th>
-                        <th>Nama</th>
-                        <th>Jumlah Pesanan</th>
-                        <th>Antar Jemput Yes/No</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Add rows here -->
-                </tbody>
-            </table>
-        </main>
-    </div>
+    <h1>Panel Admin</h1> <!-- Judul utama halaman -->
+    <h2>Daftar Pesanan</h2> <!-- Judul kedua untuk daftar pesanan -->
+    <div id="guestList"></div> <!-- Elemen div untuk menampilkan daftar pesanan yang telah masuk -->
+    <button onclick="clearGuestList()">Hapus Semua</button> <!-- Tombol untuk menghapus semua pesanan -->
+
+    <script src="admin.js"></script> <!-- Menghubungkan file JavaScript eksternal untuk logika interaksi -->
 </body>
 </html>
