@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8"> <!-- Menentukan karakter set dokumen sebagai UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Membuat halaman responsif dengan menetapkan lebar tampilan ke lebar perangkat -->
+    <title>Buku Tamu</title> <!-- Judul halaman yang muncul di tab browser -->
+    <link rel="stylesheet" href="styles.css"> <!-- Menghubungkan file CSS eksternal untuk styling -->
+</head>
+<body>
+    <h1>Masukan Pesanan</h1> <!-- Judul utama halaman -->
+    <form id="guestForm"> <!-- Formulir untuk memasukkan data tamu -->
+        <label for="name">Nama:</label> <!-- Label untuk input nama -->
+        <input type="text" id="name" name="name" required><br><br> <!-- Input teks untuk nama, bersifat wajib -->
+        
+        <label for="orderQuantity">Jumlah Pesanan:</label> <!-- Label untuk input jumlah pesanan -->
+        <input type="number" id="orderQuantity" name="orderQuantity" required><br><br> <!-- Input angka untuk jumlah pesanan, bersifat wajib -->
+        
+        <label>Antar/Jemput:</label><br> <!-- Label untuk pilihan antar/jemput -->
+        <input type="radio" id="yes" name="pickup" value="Ya" required> <!-- Input radio untuk pilihan "Ya", bersifat wajib -->
+        <label for="yes">Ya</label><br> <!-- Label untuk pilihan "Ya" -->
+        <input type="radio" id="no" name="pickup" value="Tidak" required> <!-- Input radio untuk pilihan "Tidak", bersifat wajib -->
+        <label for="no">Tidak</label><br><br> <!-- Label untuk pilihan "Tidak" -->
+        
+        <button type="submit">Kirim</button> <!-- Tombol untuk mengirim formulir -->
+    </form>
+    <h2>Daftar Pesanan</h2> <!-- Judul kedua untuk daftar tamu -->
+    <div id="guestList"></div> <!-- Elemen div untuk menampilkan daftar tamu yang telah masuk -->
+
+    <script src="script.js"></script> <!-- Menghubungkan file JavaScript eksternal untuk logika interaksi -->
+</body>
+</html>
