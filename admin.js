@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() { // Menjalankan kode s
             <strong>Nama:</strong> ${guest.name} <br>
             <strong>Jumlah Pesanan:</strong> ${guest.orderQuantity} <br>
             <strong>Antar/Jemput:</strong> ${guest.pickup} <br>
-            <button onclick="deleteGuest(${guest.orderNumber})">Delete</button> 
+            <button onclick="deleteGuest(${guest.orderNumber})">Done</button> 
         `;
         guestList.appendChild(guestDiv); // Menambahkan div ke elemen daftar tamu
     }
