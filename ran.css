@@ -18,7 +18,7 @@ body {
 
 /* Navigation Styles */
 nav {
-    background: white;
+    
     color: black;
     padding: 10px 0;
     text-align: center;
@@ -42,9 +42,9 @@ nav ul li a {
 
 /* Header Styles */
 header {
-    background: #6ab04c;
+    background-image: url("laundry-sepatu.jpg");
     color: #fff;
-    padding: 100px 0;
+    padding: 50px 0;
     text-align: center;
 }
 
@@ -133,6 +133,11 @@ section .container {
 
 #Contact p {
     margin: 20px 0;
+}
+
+.watsap{
+    background-image: url('images.png');
+    width: 100%;
 }
 
 /* Footer Styles */
