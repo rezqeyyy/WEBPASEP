@@ -203,7 +203,7 @@ section .container {
 }
 
 /* Footer Styles */
-footer {
+.bcs {
     background: #333;
     color: #fff;
     text-align: center;
@@ -211,13 +211,17 @@ footer {
     margin-bottom: 0 ;
 }
 
-footer h1 {
+.bcs h1 {
     color: #6ab04c;
 }
 
-footer iframe {
+.bcs iframe {
     border: 0;
     width: 80%;
     height: 400px;
     margin: 20px auto;
+}
+
+footer {
+    background-color: white;
 }

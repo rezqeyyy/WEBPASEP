@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const guestDiv = document.createElement('div'); // Membuat elemen div baru
         guestDiv.classList.add('guest-entry'); // Menambahkan kelas 'guest-entry' ke div
         guestDiv.innerHTML = ` 
-            <strong>No Pesanan:</strong> ${guest.orderNumber} <br>
+            <strong>No Antrian:</strong> ${guest.orderNumber} <br>
             <strong>Nama:</strong> ${guest.name} <br>
             <strong>Jumlah Pesanan:</strong> ${guest.orderQuantity} <br>
             <strong>Total Harga:</strong> Rp. ${totalPrice.toLocaleString()} <br> <!-- Menampilkan total harga -->
