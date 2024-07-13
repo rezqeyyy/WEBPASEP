@@ -1,11 +1,12 @@
-document.addEventListener('DOMContentLoaded', function() { // Menjalankan kode setelah seluruh dokumen dimuat
+document.addEventListener('DOMContentLoaded', function() {
     const guestForm = document.getElementById('guestForm'); // Mendapatkan elemen formulir dengan id 'guestForm'
     const guestList = document.getElementById('guestList'); // Mendapatkan elemen daftar tamu dengan id 'guestList'
+    const pricePerItem = 50000; // Harga per item
 
     // Memuat daftar tamu yang ada dari localStorage
     loadGuestList();
 
-    guestForm.addEventListener('submit', function(event) { // Menangani event submit pada formulir
+    guestForm.addEventListener('submit', function(event) {
         event.preventDefault(); // Mencegah form submit default
 
         const name = document.getElementById('name').value; // Mendapatkan nilai input nama
@@ -46,13 +47,16 @@ document.addEventListener('DOMContentLoaded', function() { // Menjalankan kode s
     }
 
     function displayGuest(guest) { // Fungsi untuk menampilkan tamu di halaman
+        const totalPrice = guest.orderQuantity * pricePerItem; // Menghitung total harga
         const guestDiv = document.createElement('div'); // Membuat elemen div baru
         guestDiv.classList.add('guest-entry'); // Menambahkan kelas 'guest-entry' ke div
         guestDiv.innerHTML = ` 
             <strong>No Pesanan:</strong> ${guest.orderNumber} <br>
             <strong>Nama:</strong> ${guest.name} <br>
             <strong>Jumlah Pesanan:</strong> ${guest.orderQuantity} <br>
+            <strong>Total Harga:</strong> Rp. ${totalPrice.toLocaleString()} <br> <!-- Menampilkan total harga -->
             <strong>Antar/Jemput:</strong> ${guest.pickup} <br>
+            <br>
         `;
         guestList.appendChild(guestDiv); // Menambahkan div ke elemen daftar tamu
     }
