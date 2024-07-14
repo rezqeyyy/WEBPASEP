@@ -1,48 +1,73 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const guestList = document.getElementById('guestList');
-    const pricePerItem = 50000; // Harga per item
+document.addEventListener("DOMContentLoaded", () => {
+    // Function to display orders in the table
+    function displayOrders(orders) {
+        const orderTableBody = document.getElementById('orderTable').querySelector('tbody');
+        orderTableBody.innerHTML = '';
 
-    loadGuestList();
-
-    function getGuestsFromStorage() {
-        const guests = localStorage.getItem('guestList');
-        return guests ? JSON.parse(guests) : [];
+        orders.forEach((order, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${order.name}</td>
+                <td>${order.phone}</td>
+                <td>${order.address}</td>
+                <td>${order.delivery}</td>
+                <td>${order.orderDetails.replace(/, /g, '<br>')}</td>
+                <td>${order.totalItems}</td>
+                <td>Rp ${order.total} rb</td>
+                <td>${new Date(order.timestamp).toLocaleString()}</td>
+                <td><button class="done-btn" onclick="markAsDone(${index})">Selesai</button></td>
+            `;
+            orderTableBody.appendChild(row);
+        });
     }
 
-    function saveGuestsToStorage(guests) {
-        localStorage.setItem('guestList', JSON.stringify(guests));
+    // Function to display ready for delivery orders
+    function displayReadyForDeliveryOrders(orders) {
+        const readyForDeliveryTableBody = document.getElementById('readyForDeliveryTable').querySelector('tbody');
+        readyForDeliveryTableBody.innerHTML = '';
+
+        orders.forEach((order, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${order.name}</td>
+                <td>${order.phone}</td>
+                <td>${order.address}</td>
+                <td>${order.delivery}</td>
+                <td>${order.orderDetails.replace(/, /g, '<br>')}</td>
+                <td>${order.totalItems}</td>
+                <td>Rp ${order.total} rb</td>
+                <td>${new Date(order.timestamp).toLocaleString()}</td>
+                <td><button class="delete-btn" onclick="deleteReadyOrder(${index})">Hapus</button></td>
+            `;
+            readyForDeliveryTableBody.appendChild(row);
+        });
     }
 
-    function loadGuestList() {
-        const guests = getGuestsFromStorage();
-        guests.forEach(displayGuest);
-    }
+    // Retrieve orders from localStorage and display them
+    const orders = JSON.parse(localStorage.getItem('orders')) || [];
+    const readyForDeliveryOrders = JSON.parse(localStorage.getItem('readyForDeliveryOrders')) || [];
+    displayOrders(orders);
+    displayReadyForDeliveryOrders(readyForDeliveryOrders);
 
-    function displayGuest(guest) {
-        const totalPrice = guest.orderQuantity * pricePerItem; // Menghitung total harga
-        const guestDiv = document.createElement('div');
-        guestDiv.classList.add('guest-entry');
-        guestDiv.innerHTML = `
-            <strong>No Pesanan:</strong> ${guest.orderNumber} <br>
-            <strong>Nama:</strong> ${guest.name} <br>
-            <strong>Jumlah Pesanan:</strong> ${guest.orderQuantity} <br>
-            <strong>Total Harga:</strong> Rp. ${totalPrice.toLocaleString()} <br> <!-- Menampilkan total harga -->
-            <strong>Antar/Jemput:</strong> ${guest.pickup} <br>
-            <button onclick="deleteGuest(${guest.orderNumber})">Done</button> 
-        `;
-        guestList.appendChild(guestDiv);
-    }
+    // Function to mark an order as done
+    window.markAsDone = function(index) {
+        const order = orders[index];
+        if (order.delivery === 'Yes') {
+            readyForDeliveryOrders.push(order);
+            localStorage.setItem('readyForDeliveryOrders', JSON.stringify(readyForDeliveryOrders));
+        }
+        orders.splice(index, 1);
+        localStorage.setItem('orders', JSON.stringify(orders));
+        displayOrders(orders);
+        displayReadyForDeliveryOrders(readyForDeliveryOrders);
+    };
 
-    window.deleteGuest = function(orderNumber) {
-        let guests = getGuestsFromStorage();
-        guests = guests.filter(guest => guest.orderNumber !== orderNumber);
-        saveGuestsToStorage(guests);
-        guestList.innerHTML = '';
-        loadGuestList();
-    }
-
-    window.clearGuestList = function() {
-        localStorage.removeItem('guestList');
-        guestList.innerHTML = '';
-    }
+    // Function to delete a ready for delivery order
+    window.deleteReadyOrder = function(index) {
+        if (confirm("Are you sure you want to delete this order?")) {
+            readyForDeliveryOrders.splice(index, 1);
+            localStorage.setItem('readyForDeliveryOrders', JSON.stringify(readyForDeliveryOrders));
+            displayReadyForDeliveryOrders(readyForDeliveryOrders);
+        }
+    };
 });

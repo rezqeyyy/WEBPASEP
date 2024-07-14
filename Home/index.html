@@ -1,33 +1,323 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-    <title>RanShoes.id</title>
-    <link rel="shortcut icon" type="x - icon" href="title.png">
-    <meta charset="UTF-8"> <!-- Menentukan karakter set dokumen sebagai UTF-8 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Membuat halaman responsif dengan menetapkan lebar tampilan ke lebar perangkat -->
-    <title>Buku Tamu</title> <!-- Judul halaman yang muncul di tab browser -->
-    <link rel="stylesheet" href="styles.css"> <!-- Menghubungkan file CSS eksternal untuk styling -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Shoes Cleaning</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .order-section {
+            width: 80%;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .header img {
+            margin-right: 10px;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .delivery-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .delivery-section h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .delivery-buttons {
+            display: flex;
+            justify-content: center;
+        }
+
+        .delivery-buttons button {
+            width: 48%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0 5px;
+        }
+
+        .delivery-buttons button.no {
+            background-color: #f44336;
+        }
+
+        .delivery-buttons button:hover {
+            background-color: #45a049;
+        }
+
+        .delivery-buttons button.no:hover {
+            background-color: #d32f2f;
+        }
+
+        .service-section {
+            margin-bottom: 20px;
+        }
+
+        .service-section h3 {
+            margin-top: 0;
+        }
+
+        #summarySection {
+            display: none;
+            background-color: #e2e2e2;
+            padding: 20px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+
+        #summarySection h2 {
+            margin-top: 0;
+        }
+
+        .summary-details {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .summary-details p {
+            margin: 5px 0;
+        }
+
+        .summary-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .summary-buttons button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .summary-buttons button:first-child {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .summary-buttons button:last-child {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .summary-buttons button:first-child:hover {
+            background-color: #45a049;
+        }
+
+        .summary-buttons button:last-child:hover {
+            background-color: #d32f2f;
+        }
+
+        button.order-now {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            font-size: 18px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button.order-now:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <h1>Masukan Pesanan</h1> <!-- Judul utama halaman -->
-    <form id="guestForm"> <!-- Formulir untuk memasukkan data tamu -->
-        <label for="name">Nama:</label> <!-- Label untuk input nama -->
-        <input type="text" id="name" name="name" required><br><br> <!-- Input teks untuk nama, bersifat wajib -->
-        
-        <label for="orderQuantity">Jumlah Pesanan:</label> <!-- Label untuk input jumlah pesanan -->
-        <input type="number" id="orderQuantity" name="orderQuantity" required><br><br> <!-- Input angka untuk jumlah pesanan, bersifat wajib -->
-        
-        <label>Antar/Jemput:</label><br> <!-- Label untuk pilihan antar/jemput -->
-        <input type="radio" id="yes" name="pickup" value="Ya" required> <!-- Input radio untuk pilihan "Ya", bersifat wajib -->
-        <label for="yes">Ya</label><br> <!-- Label untuk pilihan "Ya" -->
-        <input type="radio" id="no" name="pickup" value="Tidak" required> <!-- Input radio untuk pilihan "Tidak", bersifat wajib -->
-        <label for="no">Tidak</label><br><br> <!-- Label untuk pilihan "Tidak" -->
-        
-        <button type="submit">Kirim</button> <!-- Tombol untuk mengirim formulir -->
-    </form>
-    <h2>Daftar Pesanan</h2> <!-- Judul kedua untuk daftar tamu -->
-    <div id="guestList"></div> <!-- Elemen div untuk menampilkan daftar tamu yang telah masuk -->
+    <div class="order-section">
+        <div class="header">
+            <img src="title.png" alt="Logo" width="50">
+            <h1>Order Shoe Cleaning</h1>
+        </div>
+        <form id="orderForm">
+            <h2>Customer Information</h2>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br>
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" required><br>
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" required><br>
 
-    <script src="script.js"></script> <!-- Menghubungkan file JavaScript eksternal untuk logika interaksi -->
+            <div class="delivery-section">
+                <h3>Ingin Di antar?</h3>
+                <div class="delivery-buttons">
+                    <button type="button" class="yes" onclick="selectDelivery(true)">Iya</button>
+                    <button type="button" class="no" onclick="selectDelivery(false)">Tidak</button>
+                </div>
+            </div>
+
+            <div class="service-section">
+                <h3>Color Restoration</h3>
+                <label>Color Restoration (50 rb)</label>
+                <input type="number" name="color_restoration" min="0" value="0" data-price="50"><br>
+            </div>
+
+            <h2>Total: <span id="total">0</span> rb</h2>
+
+            <button type="button" class="order-now" onclick="submitOrder()">Order Now</button>
+        </form>
+
+        <div id="summarySection">
+            <h2>Order Summary</h2>
+            <div class="summary-details" id="summary"></div>
+            <div class="summary-buttons">
+                <button type="button" onclick="resetForm()">Order Again</button>
+                <button type="button" onclick="confirmOrder()">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let deliveryFee = 0;
+
+        function selectDelivery(isDelivery) {
+            deliveryFee = isDelivery ? 10 : 0;
+            updateTotal();
+        }
+
+        function updateTotal() {
+            let total = 0;
+            const inputs = document.querySelectorAll('input[type="number"]');
+            inputs.forEach(input => {
+                const quantity = parseInt(input.value);
+                const price = parseInt(input.getAttribute('data-price'));
+                total += quantity * price;
+            });
+            total += deliveryFee; // Add delivery fee if selected
+            document.getElementById('total').innerText = total;
+        }
+
+        function submitOrder() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const delivery = deliveryFee > 0 ? 'Yes' : 'No';
+            let orderSummary = `
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Phone:</strong> ${phone}</p>
+                <p><strong>Address:</strong> ${address}</p>
+                <p><strong>Delivery:</strong> ${delivery}</p>
+                <p><strong>Order Details:</strong></p>
+            `;
+            
+            const inputs = document.querySelectorAll('input[type="number"]');
+            inputs.forEach(input => {
+                const item = input.previousElementSibling.textContent;
+                const quantity = parseInt(input.value);
+                if (quantity > 0) {
+                    orderSummary += `<p>${quantity} x ${item}</p>`;
+                }
+            });
+
+            const total = document.getElementById('total').innerText;
+            orderSummary += `<p><strong>Total:</strong> ${total} rb</p>`;
+
+            document.getElementById('summary').innerHTML = orderSummary;
+            document.getElementById('summarySection').style.display = 'block';
+            document.getElementById('orderForm').style.display = 'none';
+        }
+
+        function resetForm() {
+            document.getElementById('orderForm').reset();
+            document.getElementById('summarySection').style.display = 'none';
+            document.getElementById('orderForm').style.display = 'block';
+            deliveryFee = 0;
+            updateTotal();
+        }
+
+        function confirmOrder() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const delivery = deliveryFee > 0 ? 'Yes' : 'No';
+            let orderDetails = '';
+            let totalItems = 0;
+            
+            const inputs = document.querySelectorAll('input[type="number"]');
+            inputs.forEach(input => {
+                const item = input.previousElementSibling.textContent;
+                const quantity = parseInt(input.value);
+                if (quantity > 0) {
+                    orderDetails += `${quantity} x ${item}, `;
+                    totalItems += quantity;
+                }
+            });
+
+            const total = document.getElementById('total').innerText;
+
+            // Create an order object
+            const order = {
+                name,
+                phone,
+                address,
+                delivery,
+                orderDetails: orderDetails.slice(0, -2), // Remove the trailing comma and space
+                totalItems,
+                total,
+                timestamp: new Date().toISOString()
+            };
+
+            // Retrieve existing orders from localStorage
+            let orders = JSON.parse(localStorage.getItem('orders')) || [];
+            // Add the new order to the array
+            orders.push(order);
+            // Save the updated orders array to localStorage
+            localStorage.setItem('orders', JSON.stringify(orders));
+
+            alert("Order confirmed! Details sent to admin.");
+            resetForm();
+        }
+
+        // Add event listeners to update total whenever quantity changes
+        document.querySelectorAll('input[type="number"]').forEach(input => {
+            input.addEventListener('input', updateTotal);
+        });
+    </script>
 </body>
 </html>

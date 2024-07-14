@@ -1,19 +1,56 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-    <title>RanShoes.id</title>
-    <link rel="shortcut icon" type="x - icon" href="title.png">
-    <meta charset="UTF-8"> <!-- Menentukan karakter set dokumen sebagai UTF-8 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Membuat halaman responsif dengan menetapkan lebar tampilan ke lebar perangkat -->
-    <title>Panel Admin</title> <!-- Judul halaman yang muncul di tab browser -->
-    <link rel="stylesheet" href="styles.css"> <!-- Menghubungkan file CSS eksternal untuk styling -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Order List</title>
+    <link rel="stylesheet" href="admin.css">
 </head>
 <body>
-    <h1>Panel Admin</h1> <!-- Judul utama halaman -->
-    <h2>Daftar Pesanan</h2> <!-- Judul kedua untuk daftar pesanan -->
-    <div id="guestList"></div> <!-- Elemen div untuk menampilkan daftar pesanan yang telah masuk -->
-    <button onclick="clearGuestList()">Hapus Semua</button> <!-- Tombol untuk menghapus semua pesanan -->
-
-    <script src="admin.js"></script> <!-- Menghubungkan file JavaScript eksternal untuk logika interaksi -->
+    <div class="container">
+        <div class="header">
+            <img src="title.png" alt="Logo" width="50">
+            <h1>Order List</h1>
+        </div>
+        <table id="orderTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Delivery</th>
+                    <th>Services</th>
+                    <th>Number of Items</th>
+                    <th>Total Price</th>
+                    <th>Order Time</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Orders will be dynamically inserted here -->
+            </tbody>
+        </table>
+        
+        <h2>Ready for Delivery</h2>
+        <table id="readyForDeliveryTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Delivery</th>
+                    <th>Services</th>
+                    <th>Number of Items</th>
+                    <th>Total Price</th>
+                    <th>Order Time</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Ready for Delivery orders will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </div>
+    <script src="admin.js"></script>
 </body>
 </html>
